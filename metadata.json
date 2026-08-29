@@ -1,0 +1,10 @@
+{
+  "name": "InnerEcho - AI Emotional Journal",
+  "description": "Private, AI-driven emotional journaling with real-time multi-turn empathetic reflection, secure Firestore session isolation, and auto-summarization.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

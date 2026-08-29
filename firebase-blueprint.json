@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile information",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLoginAt": { "type": "string" }
+      },
+      "required": ["displayName"]
+    },
+    "JournalSession": {
+      "title": "JournalSession",
+      "description": "An isolated emotional journaling session",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "dominantMood": { "type": "string" },
+        "summary": { "type": "string" },
+        "tags": {
+          "type": "string"
+        },
+        "createdAt": { "type": "string" },
+        "createdAtMs": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["title", "dominantMood", "status"]
+    },
+    "JournalMessage": {
+      "title": "JournalMessage",
+      "description": "A single conversational turn message in a session",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "text": { "type": "string" },
+        "createdAtMs": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["role", "text", "createdAtMs"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": "JournalSession",
+      "description": "User journal session records"
+    },
+    "/users/{userId}/sessions/{sessionId}/messages/{messageId}": {
+      "schema": "JournalMessage",
+      "description": "Conversational messages within a journal session"
+    }
+  }
+}
